@@ -34,7 +34,7 @@ class DataAdapter(
         val textView_name: TextView = itemView.findViewById(R.id.textView_name_item_layout)
         val textView_price: TextView = itemView.findViewById(R.id.textView_price_item_layout)
         val textView_seller: TextView = itemView.findViewById(R.id.textView_seller_item_layout)
-        val imageView: ImageView = itemView.findViewById(R.id.imageView_item_layout)
+//        val imageView: ImageView = itemView.findViewById(R.id.imageView_item_layout)
 
         init{
             itemView.setOnClickListener(this)
@@ -67,14 +67,14 @@ class DataAdapter(
         holder.textView_name.text = currentItem.title
         holder.textView_price.text = currentItem.price_per_unit
         holder.textView_seller.text = currentItem.username
-        val images = currentItem.images
-        if( images != null && images.size > 0) {
-            Log.d("xxx", "#num_images: ${images.size}")
-        }
-        Glide.with(this.context)
-            .load(R.drawable.ic_user)
-            .override(200, 200)
-            .into(holder.imageView);
+//        val images = currentItem.images
+//        if( images != null && images.size > 0) {
+//            Log.d("xxx", "#num_images: ${images.size}")
+//        }
+//        Glide.with(this.context)
+//            .load(R.drawable.ic_user)
+//            .override(200, 200)
+//            .into(holder.imageView);
     }
 
     override fun getItemCount() = list.size

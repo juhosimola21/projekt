@@ -59,12 +59,13 @@ class RegisterFragment : Fragment() {
             lifecycleScope.launch {
                 registerViewModel.register()
             }
+            findNavController().navigate(R.id.action_registerFragment_to_loginFragment)
 
         }
-        registerViewModel.token.observe(viewLifecycleOwner){
-            Log.d("xxx", "navigate to login")
-            findNavController().navigate(R.id.action_registerFragment_to_listFragment)
-        }
+//        registerViewModel.token.observe(viewLifecycleOwner){
+//            Log.d("xxx", "navigate to list")
+//            findNavController().navigate(R.id.action_registerFragment_to_listFragment)
+//        }
         TextView.setOnClickListener{
             findNavController().navigate(R.id.action_registerFragment_to_loginFragment)
         }

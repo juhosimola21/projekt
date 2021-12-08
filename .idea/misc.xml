@@ -11,7 +11,9 @@
         <entry key="..\:/3 ev/ANDROID/Bazaar/app/src/main/res/layout/fragment_login2.xml" value="0.25416666666666665" />
         <entry key="..\:/3 ev/ANDROID/Bazaar/app/src/main/res/layout/fragment_register.xml" value="0.1890625" />
         <entry key="..\:/3 ev/ANDROID/Bazaar/app/src/main/res/layout/fragment_register2.xml" value="0.264" />
-        <entry key="..\:/3 ev/ANDROID/Bazaar/app/src/main/res/layout/item_layout.xml" value="0.12083333333333333" />
+        <entry key="..\:/3 ev/ANDROID/Bazaar/app/src/main/res/layout/item_layout.xml" value="0.4" />
+        <entry key="..\:/3 ev/ANDROID/Bazaar/app/src/main/res/menu/bottom_nav.xml" value="0.25416666666666665" />
+        <entry key="..\:/3 ev/ANDROID/Bazaar/app/src/main/res/xml/networksecurityconfig.xml" value="0.1" />
       </map>
     </option>
   </component>

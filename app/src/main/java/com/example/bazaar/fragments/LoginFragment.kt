@@ -39,8 +39,11 @@ class LoginFragment : Fragment() {
         val editText2: EditText = view.findViewById(R.id.edittext_password_login_fragment)
         val button1: Button = view.findViewById(R.id.button_login_fragment)
         val button2: Button = view.findViewById(R.id.button_register_fragment)
-
+        print("szia")
+        Log.d("xsjfhdwgjkgsdv","log")
         button1.setOnClickListener {
+            Log.d("username","$editText1")
+            Log.d("password", "$editText2")
             loginViewModel.user.value.let {
                 if (it != null) {
                     it.username = editText1.text.toString()
@@ -48,12 +51,19 @@ class LoginFragment : Fragment() {
                 if (it != null) {
                     it.password = editText2.text.toString()
                 }
+
             }
             lifecycleScope.launch {
+                print("Helloka")
+                Log.d("xsjfhdwgjkgsdv","launch")
                 loginViewModel.login()
             }
-
+            Log.d("username","$editText1")
+            Log.d("password", "$editText2")
+            Log.d("username","gdsfjkghjkfg")
+            Log.d("password", "dfjkdsbgvjksbksjdhvj")
         }
+
         button2.setOnClickListener{
             //Navigation.findNavController(this.requireActivity(),R.id.myNavHostFragment).navigate(R.id.action_loginFragment_to_registerFragment)
             findNavController().navigate(R.id.action_loginFragment_to_registerFragment)
