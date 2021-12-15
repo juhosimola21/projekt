@@ -39,8 +39,7 @@ class LoginFragment : Fragment() {
         val editText2: EditText = view.findViewById(R.id.edittext_password_login_fragment)
         val button1: Button = view.findViewById(R.id.button_login_fragment)
         val button2: Button = view.findViewById(R.id.button_register_fragment)
-        print("szia")
-        Log.d("xsjfhdwgjkgsdv","log")
+
         button1.setOnClickListener {
             Log.d("username","$editText1")
             Log.d("password", "$editText2")

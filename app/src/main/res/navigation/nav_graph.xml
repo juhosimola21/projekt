@@ -20,8 +20,16 @@
     <fragment
         android:id="@+id/listFragment"
         android:name="com.example.bazaar.fragments.ListFragment"
-        android:label="fragment_list"
-        tools:layout="@layout/fragment_list2" />
+        android:label="fragment_list2"
+        tools:layout="@layout/fragment_list2" >
+        <action
+            android:id="@+id/action_listFragment_to_myFaresFragment"
+            app:destination="@id/myFaresFragment" />
+        <action
+            android:id="@+id/action_listFragment_to_myMarketFragment"
+            app:destination="@id/myMarketFragment" />
+    </fragment>
+
     <fragment
         android:id="@+id/registerFragment"
         android:name="com.example.bazaar.fragments.RegisterFragment"
@@ -32,6 +40,24 @@
             app:destination="@id/loginFragment" />
         <action
             android:id="@+id/action_registerFragment_to_listFragment"
+            app:destination="@id/listFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/myFaresFragment"
+        android:name="com.example.bazaar.fragments.MyFaresFragment"
+        android:label="fragment_my_fares"
+        tools:layout="@layout/fragment_my_fares" >
+        <action
+            android:id="@+id/action_myFaresFragment_to_listFragment"
+            app:destination="@id/listFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/myMarketFragment"
+        android:name="com.example.bazaar.fragments.MyMarketFragment"
+        android:label="fragment_my_market"
+        tools:layout="@layout/fragment_my_market" >
+        <action
+            android:id="@+id/action_myMarketFragment_to_listFragment"
             app:destination="@id/listFragment" />
     </fragment>
 </navigation>

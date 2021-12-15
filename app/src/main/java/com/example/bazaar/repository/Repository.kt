@@ -6,7 +6,6 @@ import com.example.bazaar.model.*
 
 class Repository {
     suspend fun login(request: LoginRequest): LoginResponse {
-        Log.d("sdhfdags","fdshjgdfsgdfgsdvgrugvjhcgdwu")
         return RetrofitInstance.api.login(request)
     }
 
