@@ -24,19 +24,17 @@
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.093"
+            app:layout_constraintHorizontal_bias="0.09"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.12" />
+            app:layout_constraintVertical_bias="0.079" />
 
         <EditText
             android:id="@+id/edittext_name_register_fragment"
             android:layout_width="335dp"
             android:layout_height="40dp"
             android:layout_marginStart="16dp"
-            android:layout_marginTop="41dp"
             android:layout_marginEnd="16dp"
-            android:layout_marginBottom="380dp"
             android:backgroundTint="#009688"
             android:ems="10"
             android:fontFamily="serif"
@@ -44,12 +42,12 @@
             android:inputType="textPersonName"
             android:textColor="#938F8F"
             android:textColorHint="#7C7B7B"
-            app:layout_constraintBottom_toTopOf="@+id/textView2"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.34"
+            app:layout_constraintHorizontal_bias="0.318"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView"
-            app:layout_constraintVertical_bias="1.0" />
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.251" />
 
         <EditText
             android:id="@+id/edittext_password_register_fragment"
@@ -57,7 +55,6 @@
             android:layout_height="40dp"
             android:layout_marginStart="16dp"
             android:layout_marginEnd="16dp"
-            android:layout_marginBottom="448dp"
             android:backgroundTint="#009688"
             android:ems="10"
             android:fontFamily="serif"
@@ -67,10 +64,10 @@
             android:textColorHint="#7C7B7B"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.326"
+            app:layout_constraintHorizontal_bias="0.318"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/edittext_name_register_fragment"
-            app:layout_constraintVertical_bias="1.0" />
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.342" />
 
         <EditText
             android:id="@+id/edittext_email_register_fragment"
@@ -78,7 +75,6 @@
             android:layout_height="40dp"
             android:layout_marginStart="16dp"
             android:layout_marginEnd="16dp"
-            android:layout_marginBottom="380dp"
             android:backgroundTint="#009688"
             android:ems="10"
             android:fontFamily="serif"
@@ -88,10 +84,10 @@
             android:textColorHint="#7C7B7B"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.34"
+            app:layout_constraintHorizontal_bias="0.318"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/edittext_password_register_fragment"
-            app:layout_constraintVertical_bias="1.0" />
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.432" />
 
         <EditText
             android:id="@+id/edittext_phone_number_register_fragment"
@@ -106,12 +102,12 @@
             android:inputType="phone"
             android:textColor="#938F8F"
             android:textColorHint="#7C7B7B"
-            app:layout_constraintBottom_toTopOf="@+id/textView2"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.34"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/edittext_email_register_fragment"
-            app:layout_constraintVertical_bias="0.13" />
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.52" />
 
         <Button
             android:id="@+id/button_register_fragment"
@@ -125,7 +121,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/edittext_phone_number_register_fragment"
-            app:layout_constraintVertical_bias="0.274" />
+            app:layout_constraintVertical_bias="0.18" />
 
         <TextView
             android:id="@+id/textView2"
@@ -135,10 +131,10 @@
             android:textColor="#FDFDFD"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.33"
+            app:layout_constraintHorizontal_bias="0.383"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.83" />
+            app:layout_constraintTop_toBottomOf="@+id/button_register_fragment"
+            app:layout_constraintVertical_bias="0.512" />
 
         <TextView
             android:id="@+id/edittext_log_in_register_fragment"
@@ -148,10 +144,10 @@
             android:textColor="#009688"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.75"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintHorizontal_bias="0.191"
+            app:layout_constraintStart_toEndOf="@+id/textView2"
             app:layout_constraintTop_toBottomOf="@+id/button_register_fragment"
-            app:layout_constraintVertical_bias="0.32" />
+            app:layout_constraintVertical_bias="0.512" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

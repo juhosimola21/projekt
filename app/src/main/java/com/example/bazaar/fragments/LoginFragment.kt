@@ -1,5 +1,6 @@
 package com.example.bazaar.fragments
 
+import android.app.AlertDialog
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -8,6 +9,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.EditText
+import android.widget.TextView
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.Navigation
@@ -18,6 +20,10 @@ import com.example.bazaar.viewmodels.LoginViewModel
 import com.example.bazaar.viewmodels.LoginViewModelFactory
 import com.example.bazaar.viewmodels.RegisterViewModel
 import kotlinx.coroutines.launch
+import android.content.DialogInterface
+
+
+
 
 
 class LoginFragment : Fragment() {
@@ -39,6 +45,7 @@ class LoginFragment : Fragment() {
         val editText2: EditText = view.findViewById(R.id.edittext_password_login_fragment)
         val button1: Button = view.findViewById(R.id.button_login_fragment)
         val button2: Button = view.findViewById(R.id.button_register_fragment)
+        val forgot_password: TextView = view.findViewById(R.id.forgot_passwordText)
 
         button1.setOnClickListener {
             Log.d("username","$editText1")
@@ -53,21 +60,26 @@ class LoginFragment : Fragment() {
 
             }
             lifecycleScope.launch {
-                print("Helloka")
-                Log.d("xsjfhdwgjkgsdv","launch")
+                //print("Helloka")
+                //Log.d("xsjfhdwgjkgsdv","launch")
                 loginViewModel.login()
             }
-            Log.d("username","$editText1")
-            Log.d("password", "$editText2")
-            Log.d("username","gdsfjkghjkfg")
-            Log.d("password", "dfjkdsbgvjksbksjdhvj")
+//            Log.d("username","$editText1")
+//            Log.d("password", "$editText2")
+//            Log.d("username","gdsfjkghjkfg")
+//            Log.d("password", "dfjkdsbgvjksbksjdhvj")
         }
 
         button2.setOnClickListener{
             //Navigation.findNavController(this.requireActivity(),R.id.myNavHostFragment).navigate(R.id.action_loginFragment_to_registerFragment)
             findNavController().navigate(R.id.action_loginFragment_to_registerFragment)
         }
-        loginViewModel.token.observe(viewLifecycleOwner){
+
+        forgot_password.setOnClickListener{
+            findNavController().navigate(R.id.action_loginFragment_to_forgotPasswordFragment)
+        }
+
+    loginViewModel.token.observe(viewLifecycleOwner){
             Log.d("xxx", "navigate to list")
             findNavController().navigate(R.id.action_loginFragment_to_listFragment)
         }

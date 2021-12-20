@@ -41,15 +41,15 @@ class LoginViewModel(val repository: Repository) : ViewModel() {
 //    }
 
     suspend fun login() {
-        print("Hello")
-        Log.d("xsjfhdwgjkgsdv","menjel bazdmeg")
+        //Log.d("xsjfhdwgjkgsdv","menjel bazdmeg")
         val request =
             LoginRequest(username = user.value!!.username, password = user.value!!.password)
-        Log.d("usernameaaa",user.value!!.username)
-        Log.d("passwordaaa", user.value!!.password)
+        //Log.d("usernameaaa",user.value!!.username)
+        //Log.d("passwordaaa", user.value!!.password)
         try {
             val result = repository.login(request)
             MyApplication.token = result.token
+            MyApplication.username = result.username
             token.value = result.token
             Log.d("xxx", "MyApplication - token:  ${MyApplication.token}")
         } catch (e: Exception) {

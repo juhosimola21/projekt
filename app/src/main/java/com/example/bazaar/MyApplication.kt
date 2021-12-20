@@ -6,5 +6,6 @@ import com.example.bazaar.utils.SessionManager
 class MyApplication: Application(){
     companion object{
         var token: String = ""
+        var username: String = ""
     }
 }

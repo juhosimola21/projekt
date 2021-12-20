@@ -14,4 +14,7 @@ interface MarketApi {
 
     @GET(Constants.GET_PRODUCT_URL)
     suspend fun getProducts(@Header("token") token: String): ProductResponse
+
+    @GET(Constants.GET_PROFILE_INFO_URL)
+    suspend fun getProfileInfo(@Header("username") username: String): ProfileResponse
 }

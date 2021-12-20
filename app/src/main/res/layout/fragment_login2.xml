@@ -100,7 +100,7 @@
             app:layout_constraintVertical_bias="0.614" />
 
         <TextView
-            android:id="@+id/createText"
+            android:id="@+id/forgot_passwordText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Click here"
