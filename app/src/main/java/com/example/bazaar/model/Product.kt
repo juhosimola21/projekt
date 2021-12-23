@@ -24,4 +24,7 @@ data class Product(val rating: Double,
 data class ProductResponse(val item_count: Int, val products: List<Product>, val timestamp: Long)
 
 @JsonClass(generateAdapter = true)
-data class ProfileResponse (val user: User)
+data class ProfileResponse (var code: Int, var data : List<UserInfo>)
+
+@JsonClass(generateAdapter = true)
+data class UserInfo (var username: String, var phone_number: String?, var email: String, var creation_time: Long)

@@ -13,8 +13,9 @@ interface MarketApi {
     suspend fun register(@Body request: RegisterRequest): RegisterResponse
 
     @GET(Constants.GET_PRODUCT_URL)
-    suspend fun getProducts(@Header("token") token: String): ProductResponse
+    suspend fun getProducts(@Header("token") token: String, @Header("limit") limit: Int = 300): ProductResponse
 
     @GET(Constants.GET_PROFILE_INFO_URL)
     suspend fun getProfileInfo(@Header("username") username: String): ProfileResponse
+
 }

@@ -30,7 +30,7 @@ class ProfileFragment : Fragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         val factory = ProfileViewModelFactory(Repository())
-        profileViewModel = ViewModelProvider(this, factory).get(ProfileViewModel::class.java)
+        profileViewModel = ViewModelProvider(requireActivity(), factory).get(ProfileViewModel::class.java)
     }
 
     override fun onCreateView(
