@@ -1,11 +1,13 @@
 package com.example.bazaar.fragments
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -27,7 +29,7 @@ class MyMarketFragment : Fragment(), DataAdapter.OnItemClickListener, DataAdapte
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         val factory = MyMarketViewModelFactory(Repository())
-        mymarketViewModel = ViewModelProvider(this, factory).get(MyMarketViewModel::class.java)
+        mymarketViewModel = ViewModelProvider(requireActivity(), factory).get(MyMarketViewModel::class.java)
     }
 
     override fun onCreateView(
@@ -37,7 +39,7 @@ class MyMarketFragment : Fragment(), DataAdapter.OnItemClickListener, DataAdapte
         // Inflate the layout for this fragment
         val view =  inflater.inflate(R.layout.fragment_list3, container, false)
         recycler_view = view.findViewById(R.id.recycler_view)
-        setupRecyclerView() 
+        setupRecyclerView()
         mymarketViewModel.products.observe(viewLifecycleOwner){
             adapter.setData(mymarketViewModel.products.value as ArrayList<Product>)
             adapter.notifyDataSetChanged()
@@ -59,7 +61,10 @@ class MyMarketFragment : Fragment(), DataAdapter.OnItemClickListener, DataAdapte
     }
 
     override fun onItemClick(position: Int) {
-//        TODO("Not yet implemented")
+        val product = mymarketViewModel.myproducts[position]
+        mymarketViewModel.currentPosition = mymarketViewModel.products.value!!.indexOf(product)
+        findNavController().navigate(R.id.action_myMarketFragment_to_myDetailFragment)
+        Log.d("Adapter", "AdapterPosition: $position")
     }
 
     override fun onItemLongClick(position: Int) {

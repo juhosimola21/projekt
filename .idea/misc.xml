@@ -4,16 +4,21 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/3 ev/ANDROID/Bazaar/app/src/main/res/drawable-v24/ic_account_circle_black_24dp.xml" value="0.1" />
+        <entry key="..\:/3 ev/ANDROID/Bazaar/app/src/main/res/drawable/circle.xml" value="0.11666666666666667" />
         <entry key="..\:/3 ev/ANDROID/Bazaar/app/src/main/res/drawable/ic_baseline_house_24.xml" value="0.196875" />
         <entry key="..\:/3 ev/ANDROID/Bazaar/app/src/main/res/drawable/ic_heart.xml" value="0.196875" />
+        <entry key="..\:/3 ev/ANDROID/Bazaar/app/src/main/res/drawable/ic_mymarket.xml" value="0.2703125" />
         <entry key="..\:/3 ev/ANDROID/Bazaar/app/src/main/res/drawable/search_background.xml" value="0.16927083333333334" />
+        <entry key="..\:/3 ev/ANDROID/Bazaar/app/src/main/res/layout-v23/fragment_detail.xml" value="0.15208333333333332" />
         <entry key="..\:/3 ev/ANDROID/Bazaar/app/src/main/res/layout/activity_main.xml" value="0.2" />
         <entry key="..\:/3 ev/ANDROID/Bazaar/app/src/main/res/layout/fragment_blank.xml" value="0.25416666666666665" />
+        <entry key="..\:/3 ev/ANDROID/Bazaar/app/src/main/res/layout/fragment_detail.xml" value="0.1" />
         <entry key="..\:/3 ev/ANDROID/Bazaar/app/src/main/res/layout/fragment_forgot_password.xml" value="0.264" />
         <entry key="..\:/3 ev/ANDROID/Bazaar/app/src/main/res/layout/fragment_list.xml" value="0.25416666666666665" />
         <entry key="..\:/3 ev/ANDROID/Bazaar/app/src/main/res/layout/fragment_list2.xml" value="0.24010416666666667" />
         <entry key="..\:/3 ev/ANDROID/Bazaar/app/src/main/res/layout/fragment_list3.xml" value="0.4" />
         <entry key="..\:/3 ev/ANDROID/Bazaar/app/src/main/res/layout/fragment_login2.xml" value="0.25416666666666665" />
+        <entry key="..\:/3 ev/ANDROID/Bazaar/app/src/main/res/layout/fragment_my_detail.xml" value="0.25416666666666665" />
         <entry key="..\:/3 ev/ANDROID/Bazaar/app/src/main/res/layout/fragment_my_fares.xml" value="0.25416666666666665" />
         <entry key="..\:/3 ev/ANDROID/Bazaar/app/src/main/res/layout/fragment_my_market.xml" value="0.25416666666666665" />
         <entry key="..\:/3 ev/ANDROID/Bazaar/app/src/main/res/layout/fragment_profile.xml" value="0.264" />

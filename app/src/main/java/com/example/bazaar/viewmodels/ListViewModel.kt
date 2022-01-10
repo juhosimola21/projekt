@@ -13,10 +13,11 @@ import kotlinx.coroutines.launch
 
 class ListViewModel(private val repository: Repository) : ViewModel() {
     var products: MutableLiveData<List<Product>> = MutableLiveData()
+    var currentPosition:Int = 0;
 
     init{
         Log.d("xxx", "ListViewModel constructor - Token: ${MyApplication.token}")
-        getProducts()
+        //getProducts()
     }
 
     fun getProducts() {
@@ -29,5 +30,9 @@ class ListViewModel(private val repository: Repository) : ViewModel() {
                 Log.d("xxx", "ListViewMofdel exception: ${e.toString()}")
             }
         }
+    }
+
+    fun getProduct() :Product{
+        return products.value!![currentPosition]
     }
 }

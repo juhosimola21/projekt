@@ -34,6 +34,9 @@
         <action
             android:id="@+id/action_listFragment_to_profileFragment"
             app:destination="@id/profileFragment" />
+        <action
+            android:id="@+id/action_listFragment_to_detailFragment2"
+            app:destination="@id/detailFragment2" />
     </fragment>
 
     <fragment
@@ -71,6 +74,9 @@
         <action
             android:id="@+id/action_myMarketFragment_to_profileFragment"
             app:destination="@id/profileFragment" />
+        <action
+            android:id="@+id/action_myMarketFragment_to_myDetailFragment"
+            app:destination="@id/myDetailFragment" />
     </fragment>
     <fragment
         android:id="@+id/profileFragment"
@@ -96,4 +102,14 @@
             android:id="@+id/action_forgotPasswordFragment_to_loginFragment"
             app:destination="@id/loginFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/detailFragment2"
+        android:name="com.example.bazaar.fragments.DetailFragment"
+        android:label="Product Detail"
+        tools:layout="@layout/fragment_detail" />
+    <fragment
+        android:id="@+id/myDetailFragment"
+        android:name="com.example.bazaar.fragments.MyDetailFragment"
+        android:label="My Product Detail"
+        tools:layout="@layout/fragment_my_detail" />
 </navigation>

@@ -12,6 +12,7 @@ import kotlinx.coroutines.launch
 class MyMarketViewModel(private val repository: Repository) : ViewModel() {
     var products: MutableLiveData<List<Product>> = MutableLiveData()
     var myproducts: ArrayList<Product> = ArrayList()
+    var currentPosition:Int = 0;
 
     init{
         Log.d("xxx", "ListViewModel constructor - Token: ${MyApplication.token}")

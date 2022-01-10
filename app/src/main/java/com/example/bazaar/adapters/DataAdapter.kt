@@ -19,6 +19,7 @@ class DataAdapter(
     private val listener2: OnItemLongClickListener
 ) :
     RecyclerView.Adapter<DataAdapter.DataViewHolder>() {
+    private val arrayList : ArrayList<Product> = ArrayList()
 
     interface OnItemClickListener{
         fun onItemClick(position: Int)
@@ -31,10 +32,9 @@ class DataAdapter(
     // 1. user defined ViewHolder type - Embedded class!
     inner class DataViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView),
         View.OnClickListener, View.OnLongClickListener {
-        val textView_name: TextView = itemView.findViewById(R.id.textView_name_item_layout)
-        val textView_price: TextView = itemView.findViewById(R.id.textView_price_item_layout)
-        val textView_seller: TextView = itemView.findViewById(R.id.textView_seller_item_layout)
-//        val imageView: ImageView = itemView.findViewById(R.id.imageView_item_layout)
+        val productName: TextView = itemView.findViewById(R.id.textView_name_item_layout)
+        val price: TextView = itemView.findViewById(R.id.textView_price_item_layout)
+        val seller: TextView = itemView.findViewById(R.id.textView_seller_item_layout)
 
         init{
             itemView.setOnClickListener(this)
@@ -64,17 +64,9 @@ class DataAdapter(
     // 3. Called many times, when we scroll the list
     override fun onBindViewHolder(holder: DataViewHolder, position: Int) {
         val currentItem = list[position]
-        holder.textView_name.text = currentItem.title
-        holder.textView_price.text = currentItem.price_per_unit
-        holder.textView_seller.text = currentItem.username
-//        val images = currentItem.images
-//        if( images != null && images.size > 0) {
-//            Log.d("xxx", "#num_images: ${images.size}")
-//        }
-//        Glide.with(this.context)
-//            .load(R.drawable.ic_user)
-//            .override(200, 200)
-//            .into(holder.imageView);
+        holder.productName.text = currentItem.title
+        holder.price.text = currentItem.price_per_unit
+        holder.seller.text = currentItem.username
     }
 
     override fun getItemCount() = list.size

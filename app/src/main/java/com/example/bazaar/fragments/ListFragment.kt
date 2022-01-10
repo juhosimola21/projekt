@@ -1,12 +1,14 @@
 package com.example.bazaar.fragments
 
 import android.os.Bundle
+import android.util.Log
 
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.bazaar.R
@@ -28,8 +30,9 @@ class ListFragment : Fragment() , DataAdapter.OnItemClickListener, DataAdapter.O
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        setHasOptionsMenu(true)
         val factory = ListViewModelFactory(Repository())
-        listViewModel = ViewModelProvider(this, factory).get(ListViewModel::class.java)
+        listViewModel = ViewModelProvider(requireActivity(), factory).get(ListViewModel::class.java)
     }
 
     override fun onCreateView(
@@ -40,6 +43,7 @@ class ListFragment : Fragment() , DataAdapter.OnItemClickListener, DataAdapter.O
         val view =  inflater.inflate(R.layout.fragment_list2, container, false)
         recycler_view = view.findViewById(R.id.recycler_view)
         setupRecyclerView()
+        listViewModel.getProducts()
         listViewModel.products.observe(viewLifecycleOwner){
             adapter.setData(listViewModel.products.value as ArrayList<Product>)
             adapter.notifyDataSetChanged()
@@ -61,7 +65,10 @@ class ListFragment : Fragment() , DataAdapter.OnItemClickListener, DataAdapter.O
     }
 
     override fun onItemClick(position: Int) {
-//        TODO("Not yet implemented")
+        listViewModel.currentPosition = position
+        Log.d("xxx","Position: ${listViewModel.currentPosition}")
+        findNavController().navigate(R.id.action_listFragment_to_detailFragment2)
+        Log.d("Adapter", "AdapterPosition: $position")
     }
 
     override fun onItemLongClick(position: Int) {
