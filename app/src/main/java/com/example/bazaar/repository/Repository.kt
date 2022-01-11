@@ -20,4 +20,8 @@ class Repository {
     suspend fun getProfileInfo(username: String): ProfileResponse {
         return RetrofitInstance.api.getProfileInfo(username)
     }
+
+    suspend fun removeProduct(token:String, product_id:String): RemoveResponse {
+        return RetrofitInstance.api.removeProduct(token,product_id)
+    }
 }

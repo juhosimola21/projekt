@@ -11,44 +11,54 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.bazaar.MyApplication
 import com.example.bazaar.R
-import com.example.bazaar.adapters.DataAdapter
+import com.example.bazaar.adapters.MyMarketDataAdapter
 import com.example.bazaar.model.Product
 import com.example.bazaar.repository.Repository
 import com.example.bazaar.viewmodels.ListViewModel
 import com.example.bazaar.viewmodels.ListViewModelFactory
-import com.example.bazaar.viewmodels.MyMarketViewModel
-import com.example.bazaar.viewmodels.MyMarketViewModelFactory
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 
 
-class MyMarketFragment : Fragment(), DataAdapter.OnItemClickListener, DataAdapter.OnItemLongClickListener  {
-    lateinit var mymarketViewModel: MyMarketViewModel
+class MyMarketFragment : Fragment(), MyMarketDataAdapter.OnItemClickListener {
+    lateinit var myMarketViewModel: ListViewModel
     private lateinit var recycler_view: RecyclerView
-    private lateinit var adapter: DataAdapter
+    private lateinit var adapter: MyMarketDataAdapter
+    private var myProducts: ArrayList<Product> = ArrayList()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        val factory = MyMarketViewModelFactory(Repository())
-        mymarketViewModel = ViewModelProvider(requireActivity(), factory).get(MyMarketViewModel::class.java)
+        val factory = ListViewModelFactory(Repository())
+        myMarketViewModel = ViewModelProvider(requireActivity(), factory).get(ListViewModel::class.java)
     }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
         val view =  inflater.inflate(R.layout.fragment_list3, container, false)
         recycler_view = view.findViewById(R.id.recycler_view)
         setupRecyclerView()
-        mymarketViewModel.products.observe(viewLifecycleOwner){
-            adapter.setData(mymarketViewModel.products.value as ArrayList<Product>)
+        myMarketViewModel.getProducts()
+        myMarketViewModel.products.observe(viewLifecycleOwner){
+            myProducts = myMarketViewModel.products.value!!.filter{
+                it.username.equals(MyApplication.username)
+            } as ArrayList<Product>
+            adapter.setData(myProducts)
             adapter.notifyDataSetChanged()
+        }
+
+        var addbutton: FloatingActionButton = view.findViewById(R.id.button_add_product)
+        addbutton.setOnClickListener{
+            Log.d("xxx", "navigate to add page")
+            //findNavController().navigate(R.id.action_myMarketFragment_to_detailPageScretchFragment)
         }
         return view
     }
 
     private fun setupRecyclerView(){
-        adapter = DataAdapter(ArrayList<Product>(), this.requireContext(), this, this)
+        adapter = MyMarketDataAdapter(ArrayList<Product>(), this, myMarketViewModel)
         recycler_view.adapter = adapter
         recycler_view.layoutManager = LinearLayoutManager(this.context)
         recycler_view.addItemDecoration(
@@ -61,13 +71,9 @@ class MyMarketFragment : Fragment(), DataAdapter.OnItemClickListener, DataAdapte
     }
 
     override fun onItemClick(position: Int) {
-        val product = mymarketViewModel.myproducts[position]
-        mymarketViewModel.currentPosition = mymarketViewModel.products.value!!.indexOf(product)
+        val product = myProducts[position]
+        myMarketViewModel.currentPosition = myMarketViewModel.products.value!!.indexOf(product)
         findNavController().navigate(R.id.action_myMarketFragment_to_myDetailFragment)
         Log.d("Adapter", "AdapterPosition: $position")
-    }
-
-    override fun onItemLongClick(position: Int) {
-//        TODO("Not yet implemented")
     }
 }

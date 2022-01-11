@@ -28,3 +28,10 @@ data class ProfileResponse (var code: Int, var data : List<UserInfo>)
 
 @JsonClass(generateAdapter = true)
 data class UserInfo (var username: String, var phone_number: String?, var email: String, var creation_time: Long)
+
+@JsonClass(generateAdapter = true)
+data class RemoveResponse(
+    var message:String,
+    var product_id:String,
+    var deletion_time:Long
+)

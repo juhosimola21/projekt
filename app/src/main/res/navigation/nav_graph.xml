@@ -67,7 +67,7 @@
         android:id="@+id/myMarketFragment"
         android:name="com.example.bazaar.fragments.MyMarketFragment"
         android:label="MyMarket"
-        tools:layout="@layout/fragment_my_market" >
+        tools:layout="@layout/fragment_list3" >
         <action
             android:id="@+id/action_myMarketFragment_to_listFragment"
             app:destination="@id/listFragment" />

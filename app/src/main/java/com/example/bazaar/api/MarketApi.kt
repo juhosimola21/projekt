@@ -18,4 +18,7 @@ interface MarketApi {
     @GET(Constants.GET_PROFILE_INFO_URL)
     suspend fun getProfileInfo(@Header("username") username: String): ProfileResponse
 
+    @POST(Constants.REMOVE_PRODUCT_URL)
+    suspend fun removeProduct(@Header("token") token: String,
+                              @Query("product_id") product_id: String) :RemoveResponse
 }
