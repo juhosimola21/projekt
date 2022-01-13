@@ -7,8 +7,10 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.TextView
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -31,6 +33,7 @@ class ProfileFragment : Fragment() {
         super.onCreate(savedInstanceState)
         val factory = ProfileViewModelFactory(Repository())
         profileViewModel = ViewModelProvider(requireActivity(), factory).get(ProfileViewModel::class.java)
+
     }
 
     override fun onCreateView(
@@ -43,27 +46,20 @@ class ProfileFragment : Fragment() {
         val username = view.findViewById<TextView>(R.id.usernameTextView)
         val username2 = view.findViewById<TextView>(R.id.name_layout)
         val phoneNumber = view.findViewById<TextView>(R.id.phoneNumberTextView)
+        val button = view.findViewById<Button>(R.id.settingsButton)
         username.text = MyApplication.username
         username2.text = MyApplication.username
-
+        profileViewModel.getProfile()
         profileViewModel.user.observe(viewLifecycleOwner){
 
             email.text = it.email
             phoneNumber.text = it.phone_number
         }
+
+        button.setOnClickListener {
+            findNavController().navigate(R.id.action_profileFragment_to_profileUpdateFragment)
+        }
         return view
     }
 
-    private fun setupRecyclerView(){
-        //adapter = DataAdapter(User(), this.requireContext(), this, this)
-        recycler_view.adapter = adapter
-        recycler_view.layoutManager = LinearLayoutManager(this.context)
-        recycler_view.addItemDecoration(
-            DividerItemDecoration(
-                activity,
-                DividerItemDecoration.VERTICAL
-            )
-        )
-        recycler_view.setHasFixedSize(true)
-    }
 }

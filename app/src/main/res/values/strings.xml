@@ -2,4 +2,26 @@
     <string name="app_name">Bazaar</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string-array name="price">
+        <item>RON</item>
+        <item>EUR</item>
+        <item>USD</item>
+        <item>HUF</item>
+    </string-array>
+
+    <string-array name="amount">
+        <item>L</item>
+        <item>Kg</item>
+        <item>m</item>
+        <item>pc</item>
+    </string-array>
+
+    <string-array name="status">
+        <item>OPEN</item>
+        <item>INCOMING</item>
+        <item>DECLINED</item>
+        <item>ACCEPTED</item>
+        <item>DELIVERED</item>
+    </string-array>
 </resources>

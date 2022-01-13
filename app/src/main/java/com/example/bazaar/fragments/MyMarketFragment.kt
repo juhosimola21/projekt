@@ -52,7 +52,7 @@ class MyMarketFragment : Fragment(), MyMarketDataAdapter.OnItemClickListener {
         var addbutton: FloatingActionButton = view.findViewById(R.id.button_add_product)
         addbutton.setOnClickListener{
             Log.d("xxx", "navigate to add page")
-            //findNavController().navigate(R.id.action_myMarketFragment_to_detailPageScretchFragment)
+            findNavController().navigate(R.id.action_myMarketFragment_to_addProductFragment)
         }
         return view
     }
