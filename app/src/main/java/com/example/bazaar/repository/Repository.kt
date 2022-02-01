@@ -33,4 +33,8 @@ class Repository {
     suspend fun updateUser(token: String, request: SettingsRequest): SettingsResponse {
         return RetrofitInstance.api.updateUser(token, request)
     }
+
+    suspend fun updateProduct(token :String, product_id: String, request:UpdateRequest) : UpdateResponse {
+        return RetrofitInstance.api.updateProduct(token,product_id, request)
+    }
 }

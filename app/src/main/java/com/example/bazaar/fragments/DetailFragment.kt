@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
@@ -45,6 +46,7 @@ class DetailFragment : Fragment() {
         val price: TextView = view.findViewById(R.id.priceTextViewDetail)
         val unit: TextView = view.findViewById(R.id.unitsTextViewDetail)
         val priceItem: TextView = view.findViewById(R.id.priceItemTextViewDetail)
+        val picture: ImageView = view.findViewById(R.id.imageView5)
 
         seller.text = productItem.username
         date.text = productItem.creation_time.toString()
@@ -66,6 +68,9 @@ class DetailFragment : Fragment() {
 //
 //        }
 
+        picture.setOnClickListener{
+            findNavController().navigate(R.id.action_detailFragment2_to_otherProfileFragment)
+        }
         return view
     }
 }

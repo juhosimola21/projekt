@@ -4,6 +4,7 @@ import com.example.bazaar.model.*
 import com.example.bazaar.utils.Constants
 import com.example.bazaar.utils.Constants.ID_PRODUCT
 import com.example.bazaar.utils.Constants.UPDATE_DATA_URL
+import com.example.bazaar.utils.Constants.UPDATE_PRODUCT_URL
 import com.squareup.moshi.JsonClass
 import retrofit2.Response
 import retrofit2.http.*
@@ -51,4 +52,11 @@ interface MarketApi {
         @Header("token") token: String,
         @Body request: SettingsRequest
     ): SettingsResponse
+
+    @POST(UPDATE_PRODUCT_URL)
+    suspend fun updateProduct(
+        @Header("token") token: String,
+        @Query("product_id") product_id: String,
+        @Body request: UpdateRequest
+    ): UpdateResponse
 }

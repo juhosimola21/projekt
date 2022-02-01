@@ -9,6 +9,7 @@ object Constants {
     const val REMOVE_PRODUCT_URL = "remove"
     const val ADD_PRODUCT_URL = "products/add"
     const val UPDATE_DATA_URL = "user/update"
+    const val UPDATE_PRODUCT_URL ="products/update"
 
 
     var ID_PRODUCT = ""

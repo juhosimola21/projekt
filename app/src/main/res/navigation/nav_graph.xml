@@ -112,12 +112,23 @@
         android:id="@+id/detailFragment2"
         android:name="com.example.bazaar.fragments.DetailFragment"
         android:label="Product Detail"
-        tools:layout="@layout/fragment_detail" />
+        tools:layout="@layout/fragment_detail" >
+        <action
+            android:id="@+id/action_detailFragment2_to_otherProfileFragment"
+            app:destination="@id/otherProfileFragment" />
+    </fragment>
     <fragment
         android:id="@+id/myDetailFragment"
         android:name="com.example.bazaar.fragments.MyDetailFragment"
         android:label="My Product Detail"
-        tools:layout="@layout/fragment_my_detail" />
+        tools:layout="@layout/fragment_my_detail" >
+        <action
+            android:id="@+id/action_myDetailFragment_to_profileFragment"
+            app:destination="@id/profileFragment" />
+        <action
+            android:id="@+id/action_myDetailFragment_to_updateFragment"
+            app:destination="@id/updateFragment" />
+    </fragment>
     <fragment
         android:id="@+id/addProductFragment"
         android:name="com.example.bazaar.fragments.AddProductFragment"
@@ -135,5 +146,19 @@
         <action
             android:id="@+id/action_profileUpdateFragment_to_profileFragment"
             app:destination="@id/profileFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/otherProfileFragment"
+        android:name="com.example.bazaar.fragments.OtherProfileFragment"
+        android:label="fragment_other_profile"
+        tools:layout="@layout/fragment_other_profile" />
+    <fragment
+        android:id="@+id/updateFragment"
+        android:name="com.example.bazaar.fragments.UpdateFragment"
+        android:label="fragment_update"
+        tools:layout="@layout/fragment_update" >
+        <action
+            android:id="@+id/action_updateFragment_to_myDetailFragment"
+            app:destination="@id/myDetailFragment" />
     </fragment>
 </navigation>
