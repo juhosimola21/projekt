@@ -150,12 +150,12 @@
     <fragment
         android:id="@+id/otherProfileFragment"
         android:name="com.example.bazaar.fragments.OtherProfileFragment"
-        android:label="fragment_other_profile"
+        android:label="Profile"
         tools:layout="@layout/fragment_other_profile" />
     <fragment
         android:id="@+id/updateFragment"
         android:name="com.example.bazaar.fragments.UpdateFragment"
-        android:label="fragment_update"
+        android:label="Detail Update"
         tools:layout="@layout/fragment_update" >
         <action
             android:id="@+id/action_updateFragment_to_myDetailFragment"

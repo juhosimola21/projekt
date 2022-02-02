@@ -7,6 +7,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -27,27 +28,35 @@ class ListFragment : Fragment() , DataAdapter.OnItemClickListener, DataAdapter.O
     lateinit var listViewModel: ListViewModel
     private lateinit var recycler_view: RecyclerView
     private lateinit var adapter: DataAdapter
+    val orders = mutableListOf<Product>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setHasOptionsMenu(true)
         val factory = ListViewModelFactory(Repository())
         listViewModel = ViewModelProvider(requireActivity(), factory).get(ListViewModel::class.java)
+
+
     }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+
         // Inflate the layout for this fragment
         val view =  inflater.inflate(R.layout.fragment_list2, container, false)
+
         recycler_view = view.findViewById(R.id.recycler_view)
+
         setupRecyclerView()
         listViewModel.getProducts()
         listViewModel.products.observe(viewLifecycleOwner){
             adapter.setData(listViewModel.products.value as ArrayList<Product>)
             adapter.notifyDataSetChanged()
-        }
+      }
+
+
         return view
     }
 
@@ -72,7 +81,12 @@ class ListFragment : Fragment() , DataAdapter.OnItemClickListener, DataAdapter.O
     }
 
     override fun onItemLongClick(position: Int) {
-//        TODO("Not yet implemented")
+        listViewModel.currentPosition = position
+        val currentposition = listViewModel.currentPosition
+        listViewModel.products.value!![currentposition].order = "1"
+        //findNavController().navigate(R.id.action_listFragment_to_myFaresFragment)
     }
+
+
 
 }

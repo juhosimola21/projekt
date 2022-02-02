@@ -1,60 +1,80 @@
 package com.example.bazaar.fragments
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.DividerItemDecoration
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import com.example.bazaar.MyApplication
 import com.example.bazaar.R
+import com.example.bazaar.adapters.DataAdapter
+import com.example.bazaar.adapters.MyMarketDataAdapter
+import com.example.bazaar.model.Product
+import com.example.bazaar.repository.Repository
+import com.example.bazaar.viewmodels.ListViewModel
+import com.example.bazaar.viewmodels.ListViewModelFactory
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
 
-/**
- * A simple [Fragment] subclass.
- * Use the [MyFaresFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
-class MyFaresFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
+class MyFaresFragment : Fragment(), MyMarketDataAdapter.OnItemClickListener {
+    lateinit var myFaresViewModel: ListViewModel
+    private lateinit var recycler_view: RecyclerView
+    private lateinit var adapter: MyMarketDataAdapter
+    private var myProducts: ArrayList<Product> = ArrayList()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
+        val factory = ListViewModelFactory(Repository())
+        myFaresViewModel = ViewModelProvider(requireActivity(), factory).get(ListViewModel::class.java)
     }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_my_fares, container, false)
+        val view =  inflater.inflate(R.layout.fragment_list3, container, false)
+        recycler_view = view.findViewById(R.id.recycler_view)
+        setupRecyclerView()
+        myFaresViewModel.getProducts()
+        myFaresViewModel.products.observe(viewLifecycleOwner){
+            myProducts = myFaresViewModel.products.value!!.filter{
+                it.order.equals("1")
+            } as ArrayList<Product>
+            adapter.setData(myProducts)
+            adapter.notifyDataSetChanged()
+        }
+
+        var addbutton: FloatingActionButton = view.findViewById(R.id.button_add_product)
+        addbutton.setOnClickListener{
+            Log.d("xxx", "navigate to add page")
+            findNavController().navigate(R.id.action_myMarketFragment_to_addProductFragment)
+        }
+        return view
     }
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment MyFaresFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            MyFaresFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
-                }
-            }
+    private fun setupRecyclerView(){
+        adapter = MyMarketDataAdapter(ArrayList<Product>(), this, myFaresViewModel)
+        recycler_view.adapter = adapter
+        recycler_view.layoutManager = LinearLayoutManager(this.context)
+        recycler_view.addItemDecoration(
+            DividerItemDecoration(
+                activity,
+                DividerItemDecoration.VERTICAL
+            )
+        )
+        recycler_view.setHasFixedSize(true)
+    }
+
+    override fun onItemClick(position: Int) {
+        val product = myProducts[position]
+        myFaresViewModel.currentPosition = myFaresViewModel.products.value!!.indexOf(product)
+        findNavController().navigate(R.id.action_myMarketFragment_to_myDetailFragment)
+        Log.d("Adapter", "AdapterPosition: $position")
     }
 }
