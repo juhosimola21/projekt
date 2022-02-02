@@ -23,7 +23,7 @@ class ProfileViewModel(val repository: Repository) : ViewModel() {
     fun getProfile() {
         viewModelScope.launch {
             try {
-                val result =repository.getProfileInfo(MyApplication.username)
+                val result = repository.getProfileInfo(user.value!!.username)
                 user.value = result.data[0]
                 Log.d("xxx", "ProfileViewModel - #username:  ${result.code}")
             }catch(e: Exception){

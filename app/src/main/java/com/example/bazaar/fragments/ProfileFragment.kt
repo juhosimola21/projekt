@@ -47,6 +47,8 @@ class ProfileFragment : Fragment() {
         val username2 = view.findViewById<TextView>(R.id.name_layout)
         val phoneNumber = view.findViewById<TextView>(R.id.phoneNumberTextView)
         val button = view.findViewById<Button>(R.id.settingsButton)
+
+        profileViewModel.user.value!!.username = MyApplication.username
         username.text = MyApplication.username
         username2.text = MyApplication.username
         profileViewModel.getProfile()

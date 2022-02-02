@@ -46,7 +46,7 @@ class DetailFragment : Fragment() {
         val price: TextView = view.findViewById(R.id.priceTextViewDetail)
         val unit: TextView = view.findViewById(R.id.unitsTextViewDetail)
         val priceItem: TextView = view.findViewById(R.id.priceItemTextViewDetail)
-        val picture: ImageView = view.findViewById(R.id.imageView5)
+        //val picture: ImageView = view.findViewById(R.id.imageView5)
 
         seller.text = productItem.username
         date.text = productItem.creation_time.toString()
@@ -62,13 +62,9 @@ class DetailFragment : Fragment() {
         unit.text = productItem.units
         priceItem.text = productItem.price_per_unit
 
-//        seller.setOnClickListener {
-//            profileViewModel.user.value!!.username = productItem.username
-//            findNavController().navigate(R.id.action_customerDetailFragment_to_otherProfileFragment)
-//
-//        }
 
-        picture.setOnClickListener{
+        seller.setOnClickListener{
+            profileViewModel.user.value!!.username = productItem.username
             findNavController().navigate(R.id.action_detailFragment2_to_otherProfileFragment)
         }
         return view
