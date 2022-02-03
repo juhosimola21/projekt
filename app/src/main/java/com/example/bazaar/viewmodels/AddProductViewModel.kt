@@ -4,19 +4,35 @@ import android.content.Context
 import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import com.example.bazaar.MyApplication
 import com.example.bazaar.model.AddProductRequest
 import com.example.bazaar.model.MyProduct
+import com.example.bazaar.model.Product
 import com.example.bazaar.repository.Repository
 import com.example.bazaar.utils.Constants
 import com.example.bazaar.utils.Constants.ID_PRODUCT
+import kotlinx.coroutines.launch
 
 class AddProductViewModel(val context: Context, val repository: Repository) : ViewModel() {
     var token: MutableLiveData<String> = MutableLiveData()
     var product = MutableLiveData<MyProduct>()
+    var products: MutableLiveData<List<Product>> = MutableLiveData()
 
     init {
         product.value = MyProduct()
+    }
+
+    fun getProducts() {
+        viewModelScope.launch {
+            try {
+                val result = repository.getProducts(MyApplication.token)
+                products.value = result.products
+                Log.d("xxx", "ListViewModel - #products:  ${result.item_count}")
+            }catch(e: Exception){
+                Log.d("xxx", "ListViewMofdel exception: ${e.toString()}")
+            }
+        }
     }
 
     suspend fun addProduct() {

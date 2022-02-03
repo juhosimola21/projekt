@@ -59,7 +59,7 @@ class UpdateFragment : Fragment() {
             }
             updateViewModel.updateProduct()
             Toast.makeText(context,"Update was successful!", Toast.LENGTH_SHORT).show()
-            findNavController().navigate(R.id.action_updateFragment_to_myDetailFragment)
+            findNavController().navigate(R.id.action_updateFragment_to_myMarketFragment)
         }
 
 

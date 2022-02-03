@@ -13,7 +13,6 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.bazaar.MyApplication
 import com.example.bazaar.R
-import com.example.bazaar.adapters.DataAdapter
 import com.example.bazaar.adapters.MyMarketDataAdapter
 import com.example.bazaar.model.Product
 import com.example.bazaar.repository.Repository
@@ -23,7 +22,7 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton
 
 
 class MyFaresFragment : Fragment(), MyMarketDataAdapter.OnItemClickListener {
-    lateinit var myFaresViewModel: ListViewModel
+    lateinit var myMarketViewModel: ListViewModel
     private lateinit var recycler_view: RecyclerView
     private lateinit var adapter: MyMarketDataAdapter
     private var myProducts: ArrayList<Product> = ArrayList()
@@ -31,35 +30,30 @@ class MyFaresFragment : Fragment(), MyMarketDataAdapter.OnItemClickListener {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         val factory = ListViewModelFactory(Repository())
-        myFaresViewModel = ViewModelProvider(requireActivity(), factory).get(ListViewModel::class.java)
+        myMarketViewModel = ViewModelProvider(requireActivity(), factory).get(ListViewModel::class.java)
     }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val view =  inflater.inflate(R.layout.fragment_list3, container, false)
-        recycler_view = view.findViewById(R.id.recycler_view)
+        val view =  inflater.inflate(R.layout.fragment_my_fares, container, false)
+        recycler_view = view.findViewById(R.id.recycler_view_orders)
         setupRecyclerView()
-        myFaresViewModel.getProducts()
-        myFaresViewModel.products.observe(viewLifecycleOwner){
-            myProducts = myFaresViewModel.products.value!!.filter{
-                it.order.equals("1")
+        myMarketViewModel.getProducts()
+        myMarketViewModel.products.observe(viewLifecycleOwner){
+            myProducts = myMarketViewModel.products.value!!.filter{
+                it.order.equals("ordered")
             } as ArrayList<Product>
             adapter.setData(myProducts)
             adapter.notifyDataSetChanged()
         }
 
-        var addbutton: FloatingActionButton = view.findViewById(R.id.button_add_product)
-        addbutton.setOnClickListener{
-            Log.d("xxx", "navigate to add page")
-            findNavController().navigate(R.id.action_myMarketFragment_to_addProductFragment)
-        }
         return view
     }
 
     private fun setupRecyclerView(){
-        adapter = MyMarketDataAdapter(ArrayList<Product>(), this, myFaresViewModel)
+        adapter = MyMarketDataAdapter(ArrayList<Product>(), this, myMarketViewModel)
         recycler_view.adapter = adapter
         recycler_view.layoutManager = LinearLayoutManager(this.context)
         recycler_view.addItemDecoration(
@@ -73,8 +67,8 @@ class MyFaresFragment : Fragment(), MyMarketDataAdapter.OnItemClickListener {
 
     override fun onItemClick(position: Int) {
         val product = myProducts[position]
-        myFaresViewModel.currentPosition = myFaresViewModel.products.value!!.indexOf(product)
-        findNavController().navigate(R.id.action_myMarketFragment_to_myDetailFragment)
+        myMarketViewModel.currentPosition = myMarketViewModel.products.value!!.indexOf(product)
+        //findNavController().navigate(R.id.action_myFaresFragment_to_myDetailFragment)
         Log.d("Adapter", "AdapterPosition: $position")
     }
 }

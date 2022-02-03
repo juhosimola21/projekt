@@ -21,6 +21,7 @@ import com.example.bazaar.repository.Repository
 import com.example.bazaar.utils.Constants.ERROR
 import com.example.bazaar.viewmodels.AddProductViewModel
 import com.example.bazaar.viewmodels.AddProductViewModelFactory
+import com.example.bazaar.viewmodels.ListViewModel
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.textfield.TextInputEditText
 import com.google.android.material.textfield.TextInputLayout
@@ -28,6 +29,7 @@ import kotlinx.coroutines.launch
 
 
 class AddProductFragment : Fragment() {
+
     lateinit var addProductViewModel: AddProductViewModel
     private lateinit var recycler_view: RecyclerView
     private lateinit var adapter: DataAdapter
@@ -44,6 +46,7 @@ class AddProductFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+
         val layout = inflater.inflate(R.layout.fragment_add_product, container, false)
 
         val price = resources.getStringArray(R.array.price)
@@ -152,6 +155,7 @@ class AddProductFragment : Fragment() {
                     if (ERROR != 2) {
                         Toast.makeText(context,"You have successfully added an item!", Toast.LENGTH_SHORT).show()
                         ERROR = 4 //most mar nezhetem a reszleteket
+
                     } else {
                         Toast.makeText(context,"Failed to add an item!", Toast.LENGTH_SHORT).show()
                     }
@@ -167,7 +171,8 @@ class AddProductFragment : Fragment() {
         button2.setOnClickListener {
             if(ERROR == 4)
             {
-                findNavController().navigate(R.id.action_addProductFragment_to_myDetailFragment)
+                addProductViewModel.getProducts()
+                findNavController().navigate(R.id.action_addProductFragment_to_myMarketFragment)
             }
             else
             {

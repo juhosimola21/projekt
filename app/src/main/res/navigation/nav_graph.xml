@@ -135,8 +135,8 @@
         android:label="Add Product"
         tools:layout="@layout/fragment_add_product">
         <action
-            android:id="@+id/action_addProductFragment_to_myDetailFragment"
-            app:destination="@id/myDetailFragment" />
+            android:id="@+id/action_addProductFragment_to_myMarketFragment"
+            app:destination="@id/myMarketFragment" />
     </fragment>
     <fragment
         android:id="@+id/profileUpdateFragment"
@@ -158,7 +158,7 @@
         android:label="Detail Update"
         tools:layout="@layout/fragment_update" >
         <action
-            android:id="@+id/action_updateFragment_to_myDetailFragment"
-            app:destination="@id/myDetailFragment" />
+            android:id="@+id/action_updateFragment_to_myMarketFragment"
+            app:destination="@id/myMarketFragment" />
     </fragment>
 </navigation>

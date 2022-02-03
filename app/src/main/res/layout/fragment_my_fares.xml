@@ -4,16 +4,26 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:background="@drawable/market_wallpaper"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    tools:context=".fragments.MyFaresFragment">
 
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="328dp"
-        android:layout_height="544dp"
-        android:layout_marginTop="4dp"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recycler_view_orders"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/construction" />
+        app:layout_constraintVertical_bias="0.0"
+        tools:itemCount="10"
+        tools:listitem="@layout/fare_item_layout" />
+
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

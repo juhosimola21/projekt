@@ -28,7 +28,7 @@ data class Product(val rating: Double = 0.0,
                    var description: String ="",
                    var title: String ="",
                    val creation_time: Long =0,
-                   var order: String = "0"
+                   var order: String = ""
 )
 
 

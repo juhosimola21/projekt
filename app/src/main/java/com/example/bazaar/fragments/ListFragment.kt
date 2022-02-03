@@ -83,7 +83,7 @@ class ListFragment : Fragment() , DataAdapter.OnItemClickListener, DataAdapter.O
     override fun onItemLongClick(position: Int) {
         listViewModel.currentPosition = position
         val currentposition = listViewModel.currentPosition
-        listViewModel.products.value!![currentposition].order = "1"
+        listViewModel.products.value!![currentposition].order = "ordered"
         //findNavController().navigate(R.id.action_listFragment_to_myFaresFragment)
     }
 
